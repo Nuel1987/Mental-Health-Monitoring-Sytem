@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Support System</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="../static/images/logo.png" height="50" width="100" alt="Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#assessment">Assessment</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <div class="container">
+      <h1>Welcome to Your Mental Health Support System</h1>
+      <p>Take the first step towards better mental health. Assess your mood, get AI-powered recommendations, and find the right resources for you.</p>
+      <button onclick="location.href='#assessment'">Get Started</button>
+    </div>
+  </section>
+
+  <section id="assessment">
+    <div class="container">
+      <h2>Mental Health Assessment</h2>
+      <p>Answer a few questions to understand your current mental state.</p>
+      <form id="assessmentForm">
+        <label for="stress_level">Stress Level (1-10):</label><br>
+        <input type="number" id="stress_level" name="stress_level" min="1" max="10" required><br><br>
+        
+        <label for="sleep_quality">Sleep Quality (1-10):</label><br>
+        <input type="number" id="sleep_quality" name="sleep_quality" min="1" max="10" required><br><br>
+        
+        <label for="mood">Mood (e.g., good, okay, bad):</label><br>
+        <input type="text" id="mood" name="mood" required><br><br>
+        
+        <button type="submit">Submit</button>
+      </form>
+      <p id="assessmentResult"></p>
+    </div>
+  </section>
+
+  <section id="resources">
+    <div class="container">
+        <h2>Resources</h2>
+        <p>Access mental health resources and connect with professionals.</p>
+        <button id="viewResourcesBtn">View Resources</button>
+        <div id="resourcesList" style="display: none;">
+            <!-- Resources will be displayed here -->
+        </div>
+    </div>
+</section>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 Mental Health Support System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
