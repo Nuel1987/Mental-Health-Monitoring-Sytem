@@ -2,42 +2,23 @@
 document.getElementById('assessmentForm').addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  // Collect form data
   const stressLevel = document.getElementById('stress_level').value;
   const sleepQuality = document.getElementById('sleep_quality').value;
   const mood = document.getElementById('mood').value;
 
-  const payload = {
-    stress_level: stressLevel,
-    sleep_quality: sleepQuality,
-    mood: mood,
-  };
-
   try {
-    // Send POST request to the backend
     const response = await fetch('/api/assessment', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ stress_level: stressLevel, sleep_quality: sleepQuality, mood }),
     });
 
     const result = await response.json();
-
-    if (response.ok) {
-      // Display the result
-      const resultElement = document.getElementById('assessmentResult');
-      resultElement.textContent = result.message;
-      resultElement.style.color = "green";
-    } else {
-      displayError('An error occurred. ' + (result.error || ''));
-    }
-  } catch (error) {
-    displayError('Failed to connect to the server.');
+    document.getElementById('assessmentResult').textContent = result.message;
+  } catch {
+    document.getElementById('assessmentResult').textContent = "Error: Failed to connect.";
   }
 });
-
 // Handle "View Resources" button click with toggle functionality
 document.getElementById('viewResourcesBtn').addEventListener('click', async () => {
   const resourcesList = document.getElementById('resourcesList');
@@ -98,4 +79,21 @@ function displayError(message) {
   const resultElement = document.getElementById('assessmentResult') || document.getElementById('resourcesList');
   resultElement.textContent = message;
   resultElement.style.color = "red";
+}
+// Handle chatbot interaction
+async function sendMessage() {
+  const userMessage = document.getElementById('userMessage').value;
+  const chatMessages = document.getElementById('chatMessages');
+
+  chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+  document.getElementById('userMessage').value = '';
+
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userMessage }),
+  });
+
+  const data = await response.json();
+  chatMessages.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
 }

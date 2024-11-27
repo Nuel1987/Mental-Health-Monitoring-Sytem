@@ -15,7 +15,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#assessment">Assessment</a></li>
           <li><a href="#resources">Resources</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#chat">Chat</a></li>
         </ul>
       </nav>
     </div>
@@ -32,7 +32,6 @@
   <section id="assessment">
     <div class="container">
       <h2>Mental Health Assessment</h2>
-      <p>Answer a few questions to understand your current mental state.</p>
       <form id="assessmentForm">
         <label for="stress_level">Stress Level (1-10):</label><br>
         <input type="number" id="stress_level" name="stress_level" min="1" max="10" required><br><br>
@@ -51,18 +50,26 @@
 
   <section id="resources">
     <div class="container">
-        <h2>Resources</h2>
-        <p>Access mental health resources and connect with professionals.</p>
-        <button id="viewResourcesBtn">View Resources</button>
-        <div id="resourcesList" style="display: none;">
-            <!-- Resources will be displayed here -->
-        </div>
+      <h2>Resources</h2>
+      <button id="viewResourcesBtn">View Resources</button>
+      <div id="resourcesList"></div>
     </div>
-</section>
+  </section>
+
+  <section id="chat">
+    <div class="container">
+      <h2>Chat with Our Mental Health Bot</h2>
+      <div id="chatWindow">
+        <div id="chatMessages"></div>
+        <input type="text" id="userMessage" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      <p>© 2024 Mental Health Support System. All rights reserved.</p>
+      <p>© KobbyNuel 2024 Mental Health Support System. All rights reserved.</p>
     </div>
   </footer>
 
